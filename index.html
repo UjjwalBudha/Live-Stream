@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Africa vs Nepal Stream</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        .container {
+            width: 90%;
+            height: 85%;
+            background-color: #1b1b1b;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            color: white;
+        }
+        .tabs button {
+            flex: 1;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #333;
+            border: none;
+            color: white;
+            outline: none;
+            font-size: 16px;
+        }
+        .tabs button:hover {
+            background-color: #555;
+        }
+        .tabs button.active {
+            background-color: #111;
+        }
+        .iframe-container {
+            flex: 1;
+            display: none;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            padding: 10px;
+        }
+        .iframe-container.active {
+            display: flex;
+        }
+        iframe {
+            width: 75%;
+            height: 100%;
+            border: none;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f25d27;
+            border: none;
+            color: white;
+            cursor: pointer;
+            outline: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-link active" onclick="openStream(event, 'stream1')">Stream 1</button>
+            <button class="tab-link" onclick="openStream(event, 'stream2')">Stream 2</button>
+            <button class="tab-link" onclick="openStream(event, 'stream3')">Stream 3</button>
+        </div>
+        <div id="stream1" class="iframe-container active">
+            <iframe src='https://embedstreams.me/t20/south-africa-vs-nepal-stream-1' scrolling='no' allowfullscreen allowtransparency referrerpolicy='unsafe-url'></iframe>
+            <div class="overlay">
+                <button onclick="playStream(this)">Play Stream</button>
+            </div>
+        </div>
+        <div id="stream2" class="iframe-container">
+            <iframe src='https://embedstreams.me/t20/south-africa-vs-nepal-stream-2' scrolling='no' allowfullscreen allowtransparency referrerpolicy='unsafe-url'></iframe>
+            <div class="overlay">
+                <button onclick="playStream(this)">Play Stream</button>
+            </div>
+        </div>
+        <div id="stream3" class="iframe-container">
+            <iframe src='https://embedstreams.me/t20/south-africa-vs-nepal-stream-3' scrolling='no' allowfullscreen allowtransparency referrerpolicy='unsafe-url'></iframe>
+            <div class="overlay">
+                <button onclick="playStream(this)">Play Stream</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openStream(evt, streamName) {
+            var i, tablinks, iframeContainers;
+            iframeContainers = document.getElementsByClassName('iframe-container');
+            for (i = 0; i < iframeContainers.length; i++) {
+                iframeContainers[i].classList.remove('active');
+            }
+            tablinks = document.getElementsByClassName('tab-link');
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove('active');
+            }
+            document.getElementById(streamName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function playStream(button) {
+            var overlay = button.parentElement;
+            overlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
